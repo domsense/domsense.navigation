@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="domsense.navigation">
+
+  <five:registerPackage package="." />
+
+  <includeDependencies package="." />
+
+  <include package=".portlets" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="domsense.navigation"
+      directory="profiles/default"
+      description="Installs the domsense.navigation package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <!-- -*- extra stuff goes here -*- -->
+
+</configure>

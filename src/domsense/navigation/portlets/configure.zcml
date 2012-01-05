@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="domsense.navigation">
+
+     <permission
+       id="domsense.navigation.AddNavPortlet"
+       title="domsense.navigation: Add Nav Portlet"
+       />
+
+     <!-- Register the portlet -->
+     <plone:portlet
+         name="domsense.navigation.navportlet"
+         interface=".nav.INavPortlet"
+         assignment=".nav.Assignment"
+         view_permission="zope2.View"
+         edit_permission="domsense.navigation.AddNavPortlet"
+         renderer=".nav.Renderer"
+         addview=".nav.AddForm"
+         editview=".nav.EditForm"
+         />
+
+</configure>

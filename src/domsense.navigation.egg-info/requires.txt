@@ -1,0 +1,5 @@
+setuptools
+redturtle.smartlink
+
+[test]
+plone.app.testing

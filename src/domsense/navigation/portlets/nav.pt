@@ -1,0 +1,44 @@
+<dl class="portlet portletNav"
+    i18n:domain="plone"
+    tal:define="folder_url view/folder_url;
+                plone_view context/@@plone;
+                toLocalizedTime nocall:plone_view/toLocalizedTime;
+                viewActions here/portal_properties/site_properties/typesUseViewActionInListings|python:();
+                getIcon nocall:plone_view/getIcon;"
+    tal:attributes="class string:portlet portletNav ${view/css_class}">
+
+    <dt class="portletHeader" tal:condition="view/data/show_header">
+        <span class="portletTopLeft"></span>
+        <span tal:content="view/data/header" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:links tal:repeat="obj view/results">
+    <dd class="portletItem"
+        tal:define="isFirst repeat/obj/start;
+                    isLast repeat/obj/end;
+                    oddrow repeat/obj/odd;
+                    itemUrl    obj/getRemoteUrl;
+                    item_icon python:getIcon(obj);
+                    css_class python:oddrow and 'portletItem even' or 'portletItem odd';
+                    css_class python:css_class + (isFirst and ' first' or '');
+                    css_class python:css_class + (isLast and ' last' or '');"
+
+        tal:attributes="class css_class">
+        <a href="#"
+           class="tile"
+           tal:attributes="href itemUrl;
+                           title obj/Description">
+            <span class="link-title" tal:content="obj/pretty_title_or_id">
+             Title
+            </span>
+            <span class="link-description"
+                  tal:content="obj/Description"
+                  tal:condition="obj/Description">
+             Description
+            </span>
+        </a>
+    </dd>
+    </tal:links>
+
+</dl>
